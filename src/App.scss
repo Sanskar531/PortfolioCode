@@ -57,9 +57,15 @@ a:hover {
     display: flex;
     justify-content: right;
     flex: 1 0 auto;
+    align-items: center;
     img {
       height: 2em;
     }
+  }
+  #me {
+    height: 2.5em;
+    width: auto;
+    border-radius: 50%;
   }
   .nameTitle {
     transition: stroke-dasharray 1s ease-in;

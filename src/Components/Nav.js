@@ -1,5 +1,6 @@
 import inlogo from "./assets/ln.png";
 import ghlogo from "./assets/gh.png";
+import me from "./assets/me.jpg";
 
 function Nav(props) {
   return (
@@ -21,8 +22,8 @@ function Nav(props) {
         <h1>a</h1>
         <h1>n</h1>
       </div>
-      <a>Home</a>
-      <a>Projects</a>
+      <a onClick={(e) => props.homeHandler(e)}>Home</a>
+      <a onClick={(e) => props.projectHandler(e)}>Projects</a>
       <a>Blog</a>
       <a>FindMe</a>
       <div className="Links">
@@ -32,6 +33,7 @@ function Nav(props) {
         <a href="https://github.com/Sanskar531">
           <img src={ghlogo} alt="ghlogo" />
         </a>
+        {!props.home ? <img src={me} id="me" /> : null}
       </div>
     </nav>
   );

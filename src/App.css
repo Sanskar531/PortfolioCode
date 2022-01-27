@@ -54,9 +54,15 @@ a:hover {
   display: flex;
   justify-content: right;
   flex: 1 0 auto;
+  align-items: center;
 }
 .Nav .Links img {
   height: 2em;
+}
+.Nav #me {
+  height: 2.5em;
+  width: auto;
+  border-radius: 50%;
 }
 .Nav .nameTitle {
   transition: stroke-dasharray 1s ease-in;
