@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+@mixin translate($time) {
+  animation: load $time ease-in reverse;
+}
+
 .App {
   height: 100vh;
   width: 100vw;
@@ -46,23 +50,23 @@ a:hover {
   display: flex;
   align-items: center;
   margin: 1.5em 2.5em 2.5em 2.5em;
-}
-.Nav a {
-  padding: 0.5em;
-}
-.Nav .Links {
-  display: flex;
-  justify-content: right;
-  flex: 1 0 auto;
-}
-.Nav .Links img {
-  height: 2em;
-}
-.Nav .nameTitle {
-  transition: stroke-dasharray 1s ease-in;
-}
-.Nav .nameTitle:hover {
-  stroke-dasharray: 200em;
+  a {
+    padding: 0.5em;
+  }
+  .Links {
+    display: flex;
+    justify-content: right;
+    flex: 1 0 auto;
+    img {
+      height: 2em;
+    }
+  }
+  .nameTitle {
+    transition: stroke-dasharray 1s ease-in;
+  }
+  .nameTitle:hover {
+    stroke-dasharray: 200em;
+  }
 }
 
 .aboutMe {
@@ -72,17 +76,17 @@ a:hover {
   margin-right: 2em;
   align-items: center;
   justify-content: center;
-}
-.aboutMe img {
-  height: 27.5em;
-  width: auto;
-  border-radius: 50%;
-  padding: 2em;
-  animation: load 1s ease-in reverse;
-}
-.aboutMe div {
-  margin: 2em;
-  animation: load 2s ease-in reverse;
+  img {
+    height: 27.5em;
+    width: auto;
+    border-radius: 50%;
+    padding: 2em;
+    @include translate($time: 1s);
+  }
+  div {
+    margin: 2em;
+    @include translate($time: 2s);
+  }
 }
 
 @keyframes load {
@@ -97,5 +101,3 @@ a:hover {
     opacity: 0;
   }
 }
-
-/*# sourceMappingURL=App.css.map */
