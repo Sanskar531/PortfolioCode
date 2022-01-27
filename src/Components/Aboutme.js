@@ -1,9 +1,15 @@
 import me from "./assets/me.jpg";
+import { motion } from "framer-motion";
 
 function AboutMe(props) {
   return (
     <div className="aboutMe">
-      <img src={me} alt="me" />
+      <motion.img
+        src={me}
+        alt="me"
+        animate={{ scale: [0, 1] }}
+        transition={{ duration: 1 }}
+      />
       <div>
         <h1>Hi! I am Sanskar Gauchan!</h1>
         <p>

@@ -38,12 +38,7 @@ h4 {
 
 a {
   text-decoration: none;
-  text-decoration: underline white;
-  transition: transform ease-in-out 0.3s;
-}
-
-a:hover {
-  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .Nav {
@@ -80,14 +75,13 @@ a:hover {
   flex: 1 0 auto;
   margin-left: 2em;
   margin-right: 2em;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   img {
     height: 27.5em;
     width: auto;
     border-radius: 50%;
     padding: 2em;
-    @include translate($time: 1s);
   }
   div {
     margin: 2em;
@@ -106,4 +100,9 @@ a:hover {
     transform: translateY(120vh);
     opacity: 0;
   }
+}
+.footer {
+  display: flex;
+  justify-content: right;
+  font-size: 0.5em;
 }

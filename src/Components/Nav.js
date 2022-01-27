@@ -1,31 +1,30 @@
 import inlogo from "./assets/ln.png";
 import ghlogo from "./assets/gh.png";
 import me from "./assets/me.jpg";
+import { motion } from "framer-motion";
+
+function Links(props) {
+  return (
+    <motion.a
+      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.1, y: -10, color: "#9575CD" }}
+      onClick={(e) => props.handler(e)}
+    >
+      {props.text}
+    </motion.a>
+  );
+}
 
 function Nav(props) {
   return (
     <nav className="Nav">
-      <div>
-        <h1>S</h1>
-        <h1>a</h1>
-        <h1>n</h1>
-        <h1>s</h1>
-        <h1>k</h1>
-        <h1>a</h1>
-        <h1>r</h1>
-        <h1>&nbsp;</h1>
-        <h1>G</h1>
-        <h1>a</h1>
-        <h1>u</h1>
-        <h1>c</h1>
-        <h1>h</h1>
-        <h1>a</h1>
-        <h1>n</h1>
-      </div>
-      <a onClick={(e) => props.homeHandler(e)}>Home</a>
-      <a onClick={(e) => props.projectHandler(e)}>Projects</a>
-      <a>Blog</a>
-      <a>FindMe</a>
+      <motion.div whileHover={{ y: -10 }}>
+        <motion.h1>Sanskar Gauchan</motion.h1>
+      </motion.div>
+      <Links text="Home" handler={props.homeHandler} />
+      <Links text="Projects" handler={props.projectsHandler} />
+      <Links text="Blog" handler={props.blogHandler} />
+      <Links text="FindMe" handler={props.findHandler} />
       <div className="Links">
         <a href="https://www.linkedin.com/in/sanskargauchan/">
           <img src={inlogo} alt="linkedinLogo" />

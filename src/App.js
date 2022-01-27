@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import AboutMe from "./Components/Aboutme";
+import Footer from "./Components/Footer";
 import Nav from "./Components/Nav";
 import Project from "./Components/Projects";
 
@@ -27,6 +28,7 @@ function App() {
         homeHandler={homeHandler}
       />
       {project ? <Project /> : <AboutMe />}
+      <Footer />
     </div>
   );
 }
