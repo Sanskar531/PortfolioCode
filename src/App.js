@@ -27,7 +27,7 @@ function App() {
         projectHandler={projectHandler}
         homeHandler={homeHandler}
       />
-      {project ? <Project /> : <AboutMe />}
+      {project ? <Project /> : <AboutMe home={home} />}
       <Footer />
     </div>
   );

@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-@mixin translate($time) {
-  animation: load $time ease-in reverse;
-}
-
 .App {
   height: 100vh;
   width: 100vw;
@@ -85,24 +81,14 @@ a {
   }
   div {
     margin: 2em;
-    @include translate($time: 2s);
   }
 }
 
-@keyframes load {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    visibility: visible;
-  }
-  100% {
-    transform: translateY(120vh);
-    opacity: 0;
-  }
-}
 .footer {
   display: flex;
   justify-content: right;
   font-size: 0.5em;
+  a {
+    color: white;
+  }
 }

@@ -82,25 +82,15 @@ a {
 }
 .aboutMe div {
   margin: 2em;
-  animation: load 2s ease-in reverse;
 }
 
-@keyframes load {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    visibility: visible;
-  }
-  100% {
-    transform: translateY(120vh);
-    opacity: 0;
-  }
-}
 .footer {
   display: flex;
   justify-content: right;
   font-size: 0.5em;
+}
+.footer a {
+  color: white;
 }
 
 /*# sourceMappingURL=App.css.map */

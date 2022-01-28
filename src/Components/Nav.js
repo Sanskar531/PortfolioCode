@@ -15,24 +15,32 @@ function Links(props) {
   );
 }
 
+function ImageMove(props) {
+  return <>{props.home ? null : <motion.a></motion.a>}</>;
+}
+
 function Nav(props) {
+  const animationProjects = {
+    home: {},
+    projects: {},
+  };
   return (
     <nav className="Nav">
       <motion.div whileHover={{ y: -10 }}>
         <motion.h1>Sanskar Gauchan</motion.h1>
       </motion.div>
       <Links text="Home" handler={props.homeHandler} />
-      <Links text="Projects" handler={props.projectsHandler} />
+      <Links text="Projects" handler={props.projectHandler} />
       <Links text="Blog" handler={props.blogHandler} />
       <Links text="FindMe" handler={props.findHandler} />
       <div className="Links">
-        <a href="https://www.linkedin.com/in/sanskargauchan/">
+        <motion.a href="https://www.linkedin.com/in/sanskargauchan/">
           <img src={inlogo} alt="linkedinLogo" />
-        </a>
-        <a href="https://github.com/Sanskar531">
+        </motion.a>
+        <motion.a href="https://github.com/Sanskar531">
           <img src={ghlogo} alt="ghlogo" />
-        </a>
-        {!props.home ? <img src={me} id="me" /> : null}
+        </motion.a>
+        <ImageMove home={props.home} />
       </div>
     </nav>
   );
