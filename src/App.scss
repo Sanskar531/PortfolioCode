@@ -49,28 +49,27 @@ a {
     justify-content: right;
     flex: 1 0 auto;
     align-items: center;
-    img {
+    a img {
       height: 2em;
     }
+    .me {
+      height: 3em;
+      border-radius: 50%;
+    }
   }
-  #me {
-    height: 2.5em;
-    width: auto;
-    border-radius: 50%;
-  }
-  .nameTitle {
-    transition: stroke-dasharray 1s ease-in;
-  }
-  .nameTitle:hover {
-    stroke-dasharray: 200em;
-  }
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .aboutMe {
   display: flex;
-  flex: 1 0 auto;
   margin-left: 2em;
   margin-right: 2em;
+  flex: 1 0 auto;
   justify-content: center;
   align-items: center;
   img {
@@ -91,4 +90,37 @@ a {
   a {
     color: white;
   }
+}
+
+.modal {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: #2a2c2b;
+  border-style: solid;
+  border-radius: 5%;
+  .closeWrapper {
+    display: flex;
+    justify-content: right;
+    button {
+      width: 5%;
+      border: none;
+      background-color: white;
+    }
+  }
+  * {
+    padding: 0.5em;
+  }
+}
+
+.backdrop {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

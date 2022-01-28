@@ -1,5 +1,5 @@
 import me from "./assets/me.jpg";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 function AboutMe(props) {
   const exitEnterImageAnimations = {
@@ -20,32 +20,46 @@ function AboutMe(props) {
     },
   };
   const exitEnterTextAnimations = {
-    enter: {},
+    enter: {
+      y: [600, 0],
+      opacity: [0, 1],
+      transition: {
+        duration: 1.5,
+      },
+    },
+    exit: {
+      y: [0, 600],
+      opacity: [1, 0],
+      transition: {
+        duration: 1.5,
+      },
+    },
   };
   return (
-    <div className="aboutMe">
-      <AnimatePresence exitBeforeEnter={true}>
-        <motion.img
-          src={me}
-          alt="me"
-          animate="enter"
-          variants={exitEnterImageAnimations}
-          exit="exit"
-        />
-        <motion.div
-          animate={{ y: [600, 0], opacity: [0, 1] }}
-          transition={{ duration: 1.5 }}
-        >
-          <h1>Hi! I am Sanskar Gauchan!</h1>
-          <p>
-            A current UTS Student who loves coding and specialized in Data
-            Science and Software Development.
-            <br /> <br />I dabble a little bit in UX/Interaction Design, too,
-            since it is a vital part of software development.
-          </p>
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    <motion.div className="aboutMe">
+      <motion.img
+        key="me"
+        src={me}
+        alt="me"
+        animate="enter"
+        variants={exitEnterImageAnimations}
+        exit="exit"
+      />
+      <motion.div
+        key="aboutme"
+        animate="enter"
+        variants={exitEnterTextAnimations}
+        exit="exit"
+      >
+        <h1>Hi! I am Sanskar Gauchan!</h1>
+        <p>
+          A current UTS Student who loves coding and specialized in Data Science
+          and Software Development.
+          <br /> <br />I dabble a little bit in UX/Interaction Design, too,
+          since it is a vital part of software development.
+        </p>
+      </motion.div>
+    </motion.div>
   );
 }
 
