@@ -33,6 +33,7 @@ h4 {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
 }
@@ -41,6 +42,9 @@ a {
   display: flex;
   align-items: center;
   margin: 1.5em 2.5em 2.5em 2.5em;
+  .NavBar {
+    display: flex;
+  }
   a {
     padding: 0.5em;
   }
@@ -93,24 +97,51 @@ main {
 }
 
 .modal {
-  width: 20%;
+  width: 50%;
+  max-width: 700px;
   display: flex;
-  flex-direction: column;
   background-color: white;
+  flex-direction: column;
   color: #2a2c2b;
+  border: none;
+  border-radius: 20px;
   border-style: solid;
-  border-radius: 5%;
-  .closeWrapper {
+  border-color: white;
+  background-color: #2a2c2b;
+  div {
+    margin: 0.5em;
+    color: white;
+    flex: 1 0 auto;
     display: flex;
-    justify-content: right;
+    h4 {
+      flex: 1 0 auto;
+    }
     button {
-      width: 5%;
+      align-self: flex-start;
+      background-color: inherit;
       border: none;
-      background-color: white;
     }
   }
-  * {
+  form {
+    background-color: white;
     padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    input,
+    textarea {
+      padding: 0.5em;
+      font-size: 1em;
+      overflow: hidden;
+      width: 80%;
+      border: none;
+      border-style: solid;
+      border-radius: 10px;
+      border-color: #2a2c2b;
+    }
+    :last-child {
+      height: 6em;
+    }
+    border-radius: 0 0 20px 20px;
   }
 }
 
@@ -123,4 +154,23 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (min-width: 1900px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .Nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

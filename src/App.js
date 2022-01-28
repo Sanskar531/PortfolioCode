@@ -7,6 +7,7 @@ import Project from "./Components/Projects";
 import FindMe from "./Components/FindMe";
 import BackDrop from "./Components/BackDrop";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLocation, BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [project, setProject] = useState(false);
@@ -37,17 +38,12 @@ function App() {
           />
         )}
       </AnimatePresence>
-      <Nav
-        home={home}
-        projectHandler={projectHandler}
-        homeHandler={homeHandler}
-        findHandler={findHandler}
-      />
-      <main>
-        <AnimatePresence>
-          {home ? <AboutMe home={home} /> : <Project />}
-        </AnimatePresence>
-      </main>
+      <Nav home={home} findHandler={findHandler} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AboutMe />} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </div>
   );

@@ -12,9 +12,12 @@ function Links(props) {
         y: -10,
         color: "#9575CD",
       }}
-      onClick={(e) => props.handler(e)}
+      onClick={
+        props.handler ? (e) => props.handler(e) : (e) => e.preventDefault()
+      }
+      href={props.href && props.href}
     >
-      {props.text}
+      {props.text ? props.text : props.children}
     </motion.a>
   );
 }
@@ -25,32 +28,36 @@ function Nav(props) {
       <motion.div whileHover={{ y: -10 }}>
         <motion.h1>Sanskar Gauchan</motion.h1>
       </motion.div>
-      <Links text="Home" handler={props.homeHandler} />
-      <Links text="Projects" handler={props.projectHandler} />
-      <Links text="Blog" handler={props.blogHandler} />
-      <Links text="FindMe" handler={props.findHandler} />
-      <div className="Links">
-        <AnimatePresence>
-          <motion.div>
-            <motion.a href="https://www.linkedin.com/in/sanskargauchan/">
-              <img src={inlogo} alt="linkedinLogo" />
-            </motion.a>
-            <motion.a href="https://github.com/Sanskar531">
-              <img src={ghlogo} alt="ghlogo" />
-            </motion.a>
-          </motion.div>
-        </AnimatePresence>
-        <AnimatePresence>
-          {!props.home && (
-            <motion.img
-              src={me}
-              className="me"
-              animate={{ scale: [0, 1] }}
-              exit={{ scale: [1, 0] }}
-            ></motion.img>
-          )}
-        </AnimatePresence>
-      </div>
+      <motion.div className="NavBar">
+        <Links text="Home" href="/" />
+        <Links text="Projects" href="/Projects" />
+        <Links text="Blog" href="/Blog" />
+        <Links text="FindMe" handler={props.findHandler} />
+        <div className="Links">
+          <AnimatePresence>
+            <motion.div>
+              <Links
+                href="https://www.linkedin.com/in/sanskargauchan/"
+                children={<img src={inlogo} alt="linkedinLogo" />}
+              />
+              <Links
+                href="https://github.com/Sanskar531"
+                children={<img src={ghlogo} alt="ghlogo" />}
+              ></Links>
+            </motion.div>
+          </AnimatePresence>
+          <AnimatePresence>
+            {!props.home && (
+              <motion.img
+                src={me}
+                className="me"
+                animate={{ scale: [0, 1] }}
+                exit={{ scale: [1, 0] }}
+              ></motion.img>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
     </nav>
   );
 }

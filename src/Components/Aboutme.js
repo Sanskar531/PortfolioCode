@@ -11,11 +11,10 @@ function AboutMe(props) {
       },
     },
     exit: {
-      scale: 0.12,
-      y: -520,
-      x: 855,
+      scale: [1, 0],
+      opacity: [1, 0],
       transition: {
-        duration: 1.5,
+        duration: 1,
       },
     },
   };
