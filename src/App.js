@@ -13,29 +13,31 @@ function App() {
   const [findMe, setFindMe] = useState(false);
   const location = useLocation();
 
-  function findHandler(e) {
-    e.preventDefault();
+  function findHandler() {
     setFindMe(!findMe);
   }
   console.log(location.pathname);
 
   return (
-    <div className="App">
+    <motion.div className="App">
       <AnimatePresence>
         {findMe && (
           <BackDrop
             children={<FindMe exitHandler={findHandler} />}
             exitHandler={findHandler}
+            key={findMe}
           />
         )}
       </AnimatePresence>
       <Nav findHandler={findHandler} location={location} />
-      <Routes>
-        <Route path="/" element={<AboutMe />} location={location} />
-        <Route path="/projects" element={<Project />} location={location} />
-      </Routes>
+      <AnimatePresence exitBeforeEnter>
+        <Routes location={location} key={location.key}>
+          <Route path="/" element={<AboutMe />} />
+          <Route path="/projects" element={<Project />} />
+        </Routes>
+      </AnimatePresence>
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 

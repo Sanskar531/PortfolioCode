@@ -2,6 +2,7 @@ import inlogo from "./assets/ln.png";
 import ghlogo from "./assets/gh.png";
 import me from "./assets/me.jpg";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function AnimatedLinks(props) {
   return (
@@ -12,7 +13,13 @@ function AnimatedLinks(props) {
         y: -10,
         color: "#9575CD",
       }}
-      onClick={props.handler && ((e) => props.handler(e))}
+      onClick={
+        props.handler &&
+        ((e) => {
+          e.preventDefault();
+          props.handler();
+        })
+      }
       href={props.href && props.href}
     >
       {props.text ? props.text : props.children}
@@ -35,6 +42,7 @@ function SocialLinks(props) {
 }
 
 function Nav(props) {
+  const navigate = useNavigate();
   const socialLinks = [
     {
       name: "Linkedin",
@@ -44,28 +52,36 @@ function Nav(props) {
     { name: "github", src: ghlogo, href: "https://github.com/Sanskar531" },
   ];
   return (
-    <nav className="Nav">
+    <motion.nav className="Nav">
       <motion.div whileHover={{ y: -10 }}>
         <motion.h1>Sanskar Gauchan</motion.h1>
       </motion.div>
       <motion.div className="NavBar">
-        <AnimatedLinks text="Home" href="/" />
-        <AnimatedLinks text="Projects" href="/Projects" />
-        <AnimatedLinks text="Blog" href="/Blog" />
-        <AnimatedLinks text="FindMe" handler={props.findHandler} />
+        <motion.div>
+          <AnimatedLinks text="Home" href="/" handler={() => navigate("/")} />
+          <AnimatedLinks
+            text="Projects"
+            href="/Projects"
+            handler={() => navigate("/projects")}
+          />
+          <AnimatedLinks text="Blog" href="/Blog" />
+          <AnimatedLinks text="FindMe" handler={props.findHandler} />
+        </motion.div>
         <div className="Links">
-          {props.location.pathname !== "/" && (
-            <motion.img
-              src={me}
-              className="me"
-              animate={{ scale: [0, 1] }}
-              exit={{ scale: [1, 0] }}
-            ></motion.img>
-          )}
+          <AnimatePresence>
+            {props.location.pathname !== "/" && (
+              <motion.img
+                src={me}
+                className="me"
+                animate={{ scale: [0, 1] }}
+                exit={{ scale: [1, 0] }}
+              ></motion.img>
+            )}
+          </AnimatePresence>
           <SocialLinks socialLinks={socialLinks} />
         </div>
       </motion.div>
-    </nav>
+    </motion.nav>
   );
 }
 

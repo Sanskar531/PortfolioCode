@@ -1,5 +1,5 @@
 import me from "./assets/me.jpg";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 function AboutMe(props) {
   const exitEnterImageAnimations = {

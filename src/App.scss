@@ -45,6 +45,10 @@ a {
   .NavBar {
     display: flex;
     flex: 1 0 auto;
+    div {
+      display: flex;
+      align-items: center;
+    }
     .Links {
       display: flex;
       justify-content: right;
@@ -56,6 +60,7 @@ a {
       .me {
         height: 3em;
         border-radius: 50%;
+        padding: 0.5em;
       }
     }
   }
@@ -71,10 +76,6 @@ main {
 }
 
 .aboutMe {
-  display: flex;
-  margin-left: 2em;
-  margin-right: 2em;
-  flex: 1 0 auto;
   justify-content: center;
   align-items: center;
   img {
@@ -88,6 +89,13 @@ main {
   }
 }
 
+.aboutMe,
+.projects {
+  display: flex;
+  margin: 2em;
+  flex: 1 0 auto;
+}
+
 .footer {
   display: flex;
   justify-content: right;
@@ -95,6 +103,10 @@ main {
   a {
     color: white;
   }
+}
+
+.projects {
+  flex-direction: column;
 }
 
 .modal {
@@ -163,10 +175,13 @@ main {
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 450px) and (max-width: 1200px) {
   body {
     font-size: 12px;
   }
+}
+
+@media only screen and (max-width: 450px) {
 }
 
 @media only screen and (max-width: 750px) {
@@ -176,9 +191,6 @@ main {
     .me {
       height: 2em;
     }
-  }
-  body {
-    font-size: 12px;
   }
   h1 {
     font-size: 2em;
