@@ -44,22 +44,23 @@ a {
   margin: 1.5em 2.5em 2.5em 2.5em;
   .NavBar {
     display: flex;
+    flex: 1 0 auto;
+    .Links {
+      display: flex;
+      justify-content: right;
+      flex: 1 0 auto;
+      align-items: center;
+      a img {
+        height: 2em;
+      }
+      .me {
+        height: 3em;
+        border-radius: 50%;
+      }
+    }
   }
   a {
     padding: 0.5em;
-  }
-  .Links {
-    display: flex;
-    justify-content: right;
-    flex: 1 0 auto;
-    align-items: center;
-    a img {
-      height: 2em;
-    }
-    .me {
-      height: 3em;
-      border-radius: 50%;
-    }
   }
 }
 
@@ -168,9 +169,31 @@ main {
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 750px) {
   .Nav {
     flex-wrap: wrap;
     justify-content: center;
+    .me {
+      height: 2em;
+    }
+  }
+  body {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  .aboutMe {
+    flex-wrap: wrap;
+    flex-direction: column;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0;
+    }
+  }
+  .footer {
+    font-size: 0.75em;
   }
 }

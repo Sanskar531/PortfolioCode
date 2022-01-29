@@ -45,22 +45,23 @@ a {
 }
 .Nav .NavBar {
   display: flex;
+  flex: 1 0 auto;
 }
-.Nav a {
-  padding: 0.5em;
-}
-.Nav .Links {
+.Nav .NavBar .Links {
   display: flex;
   justify-content: right;
   flex: 1 0 auto;
   align-items: center;
 }
-.Nav .Links a img {
+.Nav .NavBar .Links a img {
   height: 2em;
 }
-.Nav .Links .me {
+.Nav .NavBar .Links .me {
   height: 3em;
   border-radius: 50%;
+}
+.Nav a {
+  padding: 0.5em;
 }
 
 main {
@@ -166,10 +167,36 @@ main {
     font-size: 12px;
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 750px) {
   .Nav {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .Nav .me {
+    height: 2em;
+  }
+
+  body {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .aboutMe {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .aboutMe div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0;
+  }
+
+  .footer {
+    font-size: 0.75em;
   }
 }
 

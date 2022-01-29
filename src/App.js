@@ -7,26 +7,17 @@ import Project from "./Components/Projects";
 import FindMe from "./Components/FindMe";
 import BackDrop from "./Components/BackDrop";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLocation, BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
-  const [project, setProject] = useState(false);
-  const [home, setHome] = useState(true);
   const [findMe, setFindMe] = useState(false);
-  function projectHandler(e) {
-    e.preventDefault();
-    setHome(false);
-    setProject(true);
-  }
+  const location = useLocation();
+
   function findHandler(e) {
     e.preventDefault();
     setFindMe(!findMe);
   }
-  function homeHandler(e) {
-    e.preventDefault();
-    setProject(false);
-    setHome(true);
-  }
+  console.log(location.pathname);
 
   return (
     <div className="App">
@@ -38,12 +29,11 @@ function App() {
           />
         )}
       </AnimatePresence>
-      <Nav home={home} findHandler={findHandler} />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AboutMe />} />
-        </Routes>
-      </BrowserRouter>
+      <Nav findHandler={findHandler} location={location} />
+      <Routes>
+        <Route path="/" element={<AboutMe />} location={location} />
+        <Route path="/projects" element={<Project />} location={location} />
+      </Routes>
       <Footer />
     </div>
   );
