@@ -102,6 +102,21 @@ main {
   justify-content: center;
   align-items: center;
 }
+.projects * {
+  margin: 0.5em;
+}
+.projects img {
+  height: 27.5em;
+  border-radius: 1.25em;
+}
+.projects div {
+  display: flex;
+}
+.projects div div {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
 
 .footer {
   display: flex;

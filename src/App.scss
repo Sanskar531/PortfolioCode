@@ -101,6 +101,21 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  * {
+    margin: 0.5em;
+  }
+  img {
+    height: 27.5em;
+    border-radius: 1.25em;
+  }
+  div {
+    display: flex;
+    div {
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
 .footer {
