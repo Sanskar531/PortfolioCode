@@ -1,27 +1,49 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 function Project(props) {
   const [currProjIndex, setCurrProjInd] = useState(0);
   return (
-    <IndividualProjects
-      handler={setCurrProjInd}
-      key={currProjIndex}
-      ind={currProjIndex}
-    />
+    <motion.div className="projectContainer" exit={{ opacity: 0 }}>
+      <AnimatePresence exitBeforeEnter>
+        <IndividualProjects
+          handler={setCurrProjInd}
+          key={currProjIndex}
+          ind={currProjIndex}
+        />
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
 function IndividualProjects(props) {
+  const [exitAnimation, setExitAnimation] = useState("");
+  function transitionLength(i) {
+    return {
+      transition: {
+        duration: i,
+      },
+    };
+  }
   const projectAnimations = {
     hidden: {
+      y: "-100vh",
       opacity: 0,
     },
     visible: {
-      opacity: [0, 1],
+      y: 0,
+      opacity: 1,
+      ...transitionLength(1),
     },
-    exit: {
-      opacity: [1, 0],
+    exitDown: {
+      y: "100vh",
+      opacity: 0,
+      ...transitionLength(1),
+    },
+    exitUp: {
+      y: "-100vh",
+      opacity: 0,
+      ...transitionLength(1),
     },
   };
   const projects = [
@@ -37,17 +59,18 @@ function IndividualProjects(props) {
   const currRenderedProj = projects[props.ind];
   return (
     <motion.div
-      className="projects"
+      key={props.ind}
       variants={projectAnimations}
       initial="hidden"
       animate="visible"
-      transition={{ duration: 1 }}
-      exit="exit"
+      className="projects"
+      exit={exitAnimation}
     >
       {props.ind !== 0 && (
         <button
           onClick={(e) => {
             e.preventDefault();
+            setExitAnimation("exitUp");
             props.handler(props.ind - 1);
           }}
         >
@@ -60,6 +83,7 @@ function IndividualProjects(props) {
         <button
           onClick={(e) => {
             e.preventDefault();
+            setExitAnimation("exitDown");
             props.handler(props.ind + 1);
           }}
         >

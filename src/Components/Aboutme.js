@@ -1,42 +1,50 @@
 import me from "./assets/me.jpg";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 function AboutMe(props) {
-  const exitEnterImageAnimations = {
-    enter: {
-      scale: [0, 1],
-      opacity: [0, 1],
+  function transitionLength(i) {
+    return {
       transition: {
-        duration: 1,
+        duration: i,
       },
+    };
+  }
+  const exitEnterImageAnimations = {
+    initial: {
+      scale: 0,
+      opacity: 0,
+    },
+    enter: {
+      scale: 1,
+      opacity: 1,
+      ...transitionLength(1),
     },
     exit: {
-      scale: [1, 0],
-      opacity: [1, 0],
-      transition: {
-        duration: 1,
-      },
+      scale: 0,
+      opacity: 0,
+      ...transitionLength(1),
     },
   };
   const exitEnterTextAnimations = {
+    initial: {
+      y: 600,
+      opacity: 0,
+    },
     enter: {
-      y: [600, 0],
-      opacity: [0, 1],
-      transition: {
-        duration: 1.5,
-      },
+      y: 0,
+      opacity: 1,
+      ...transitionLength(1.5),
     },
     exit: {
-      y: [0, 600],
-      opacity: [1, 0],
-      transition: {
-        duration: 1.5,
-      },
+      y: 600,
+      opacity: 0,
+      ...transitionLength(1.5),
     },
   };
   return (
     <motion.div className="aboutMe">
       <motion.img
+        initial="initial"
         key="me"
         src={me}
         alt="me"
@@ -45,6 +53,7 @@ function AboutMe(props) {
         exit="exit"
       />
       <motion.div
+        initial="initial"
         key="aboutme"
         animate="enter"
         variants={exitEnterTextAnimations}

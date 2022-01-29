@@ -31,7 +31,7 @@ function App() {
       </AnimatePresence>
       <Nav findHandler={findHandler} location={location} />
       <AnimatePresence exitBeforeEnter>
-        <Routes location={location} key={location.key}>
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={<AboutMe />} />
           <Route path="/projects" element={<Project />} />
         </Routes>

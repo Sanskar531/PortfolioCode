@@ -89,11 +89,18 @@ main {
   margin: 2em;
 }
 
-.aboutMe,
-.projects {
+.projectContainer,
+.aboutMe {
   display: flex;
   margin: 2em;
   flex: 1 0 auto;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer {
@@ -103,10 +110,6 @@ main {
 }
 .footer a {
   color: white;
-}
-
-.projects {
-  flex-direction: column;
 }
 
 .modal {
@@ -160,6 +163,7 @@ main {
 
 .backdrop {
   position: absolute;
+  z-index: 999;
   height: 100vh;
   width: 100vw;
   top: 0;

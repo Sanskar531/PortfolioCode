@@ -2,14 +2,17 @@ import { motion } from "framer-motion";
 
 function FindMe(props) {
   const modalAnimations = {
+    initial: {
+      opacity: 0,
+    },
     enter: {
-      opacity: [0, 1],
+      opacity: 1,
       transition: {
         duration: 1,
       },
     },
     exit: {
-      opacity: [1, 0],
+      opacity: 0,
       transition: {
         duration: 1,
       },
@@ -20,13 +23,21 @@ function FindMe(props) {
       key="model"
       className="modal"
       variants={modalAnimations}
+      initial="initial"
       animate="enter"
       exit="exit"
       onClick={(e) => e.stopPropagation()}
     >
       <div>
         <h4>You can find me on:</h4>
-        <button onClick={(e) => props.exitHandler(e)}>X</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            props.exitHandler();
+          }}
+        >
+          X
+        </button>
       </div>
       <form>
         <h4>Name</h4>

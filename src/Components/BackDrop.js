@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 function BackDrop(props) {
   return (
@@ -6,7 +6,10 @@ function BackDrop(props) {
       className="backdrop"
       animate={{ scale: [0, 1] }}
       transition={{ duration: 1 }}
-      onClick={(e) => props.exitHandler(e)}
+      onClick={(e) => {
+        e.preventDefault();
+        props.exitHandler();
+      }}
     >
       {props.children}
     </motion.div>
