@@ -62,9 +62,8 @@ a {
   height: 2rem;
 }
 .Nav .NavBar .Links .me {
-  height: 3rem;
+  height: 2rem;
   border-radius: 50%;
-  padding: 0.5rem;
 }
 .Nav a {
   padding: 0.5rem;
@@ -98,18 +97,20 @@ main {
   margin: 0.5rem;
   padding: 0.25rem;
 }
+.navMenuContainer button {
+  background-color: white;
+}
 .navMenuContainer div {
   display: flex;
   justify-content: center;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
 
 .navMenu {
+  height: 100%;
   background-color: black;
-  flex: 1 0 auto;
+  width: 50%;
   margin: 0;
-  padding: 0;
-  margin: 0.5rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -122,6 +123,7 @@ main {
   height: 100vh;
   background-color: #ffffffe1;
   margin: 0;
+  padding: 0;
   width: 100vw;
   top: 0;
   left: 0;
@@ -134,7 +136,7 @@ main {
 .aboutMe {
   display: flex;
   margin: 2rem;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
 
 .projects {
@@ -147,15 +149,18 @@ main {
   margin: 0.5rem;
 }
 .projects img {
+  flex-shrink: 1;
   height: 27.5rem;
   border-radius: 1.25rem;
 }
 .projects div {
   display: flex;
+  flex-shrink: 1;
 }
 .projects div div {
   justify-content: center;
   display: flex;
+  flex-shrink: 1;
   flex-direction: column;
 }
 
@@ -228,14 +233,14 @@ button {
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 1.5rem;
   }
 
   .aboutMe {
     flex-wrap: wrap;
   }
   .aboutMe img {
-    height: 15em;
+    height: 15rem;
   }
 
   .projects {
