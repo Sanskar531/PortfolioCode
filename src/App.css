@@ -41,7 +41,7 @@ a {
 .Nav {
   display: flex;
   align-items: center;
-  margin: 1.5em 2.5em 2.5em 2.5em;
+  margin: 2.5em 2.5em 2.5em 2.5em;
 }
 .Nav .NavBar {
   display: flex;
@@ -188,23 +188,24 @@ main {
   align-items: center;
 }
 
-@media only screen and (min-width: 1900px) {
+@media screen and (max-width: 640px) {
   body {
-    font-size: 20px;
+    font-size: 16px;
   }
-}
-@media only screen and (min-width: 450px) and (max-width: 1200px) {
-  body {
-    font-size: 12px;
-  }
-}
-@media only screen and (max-width: 750px) {
+
   .Nav {
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
   }
-  .Nav .me {
-    height: 2em;
+  .Nav a {
+    padding: 0.25em;
+  }
+  .Nav .NavBar .Links a img {
+    height: 1.25em;
+  }
+  .Nav .NavBar .Links .me {
+    visibility: hidden;
   }
 
   h1 {
@@ -213,17 +214,9 @@ main {
 
   .aboutMe {
     flex-wrap: wrap;
-    flex-direction: column;
   }
-  .aboutMe div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 0;
-  }
-
-  .footer {
-    font-size: 0.75em;
+  .aboutMe img {
+    height: 15em;
   }
 }
 

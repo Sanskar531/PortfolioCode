@@ -3,6 +3,8 @@ import ghlogo from "./assets/gh.png";
 import me from "./assets/me.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import useNavShow from "./hooks/useNavShow";
 
 function AnimatedLinks(props) {
   return (
@@ -43,6 +45,8 @@ function SocialLinks(props) {
 
 function Nav(props) {
   const navigate = useNavigate();
+  const currDimension = useNavShow();
+  const [navOpen, setNavOpen] = useState(false);
   const socialLinks = [
     {
       name: "Linkedin",
@@ -52,35 +56,39 @@ function Nav(props) {
     { name: "github", src: ghlogo, href: "https://github.com/Sanskar531" },
   ];
   return (
-    <motion.nav className="Nav">
-      <motion.div whileHover={{ y: -10 }}>
-        <motion.h1>Sanskar Gauchan</motion.h1>
-      </motion.div>
-      <motion.div className="NavBar">
-        <motion.div>
-          <AnimatedLinks text="Home" href="/" handler={() => navigate("/")} />
-          <AnimatedLinks
-            text="Projects"
-            href="/Projects"
-            handler={() => navigate("/projects")}
-          />
-          <AnimatedLinks text="Blog" href="/Blog" />
-          <AnimatedLinks text="FindMe" handler={props.findHandler} />
-        </motion.div>
-        <div className="Links">
-          <AnimatePresence>
-            {props.location.pathname !== "/" && (
-              <motion.img
-                src={me}
-                className="me"
-                animate={{ scale: [0, 1] }}
-                exit={{ scale: [1, 0] }}
-              ></motion.img>
-            )}
-          </AnimatePresence>
-          <SocialLinks socialLinks={socialLinks} />
+    <motion.nav>
+      {!currDimension ? (
+        <div className="Nav">
+          <motion.div whileHover={{ y: -10 }}>
+            <motion.h1>Sanskar Gauchan</motion.h1>
+          </motion.div>
+          <motion.div className="NavBar">
+            <AnimatedLinks text="Home" href="/" handler={() => navigate("/")} />
+            <AnimatedLinks
+              text="Projects"
+              href="/Projects"
+              handler={() => navigate("/projects")}
+            />
+            <AnimatedLinks text="Blog" href="/Blog" />
+            <AnimatedLinks text="FindMe" handler={props.findHandler} />
+            <div className="Links">
+              <AnimatePresence>
+                {props.location.pathname !== "/" && (
+                  <motion.img
+                    src={me}
+                    className="me"
+                    animate={{ scale: [0, 1] }}
+                    exit={{ scale: [1, 0] }}
+                  ></motion.img>
+                )}
+              </AnimatePresence>
+              <SocialLinks socialLinks={socialLinks} />
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+      ) : (
+        <span class="material-icons">menu</span>
+      )}
     </motion.nav>
   );
 }
