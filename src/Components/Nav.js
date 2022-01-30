@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useNavShow from "./hooks/useNavShow";
+import BackDrop from "./BackDrop";
 
 function AnimatedLinks(props) {
   return (
@@ -42,11 +43,27 @@ function SocialLinks(props) {
     </motion.div>
   );
 }
+function NavMenu(props) {
+  function handler(e, redirect) {
+    e.stopPropagation();
+    console.log(props.navigate);
+    props.navigate(redirect);
+  }
+  return (
+    <motion.div className="navMenu">
+      <motion.a onClick={(e) => handler(e, "/")}>Home</motion.a>
+      <motion.a onClick={(e) => handler(e, "/projects")}>Projects</motion.a>
+      <motion.a onClick={(e) => handler(e, "/blog")}>Blog</motion.a>
+      <motion.a onClick={(e) => handler(e, "")}>FindMe</motion.a>
+    </motion.div>
+  );
+}
 
 function Nav(props) {
   const navigate = useNavigate();
   const currDimension = useNavShow();
   const [navOpen, setNavOpen] = useState(false);
+  console.log(currDimension);
   const socialLinks = [
     {
       name: "Linkedin",
@@ -56,9 +73,9 @@ function Nav(props) {
     { name: "github", src: ghlogo, href: "https://github.com/Sanskar531" },
   ];
   return (
-    <motion.nav>
+    <>
       {!currDimension ? (
-        <div className="Nav">
+        <motion.nav className="Nav">
           <motion.div whileHover={{ y: -10 }}>
             <motion.h1>Sanskar Gauchan</motion.h1>
           </motion.div>
@@ -85,11 +102,29 @@ function Nav(props) {
               <SocialLinks socialLinks={socialLinks} />
             </div>
           </motion.div>
-        </div>
+        </motion.nav>
       ) : (
-        <span class="material-icons">menu</span>
+        <motion.nav className="navMenuContainer">
+          <button
+            onClick={(e) => {
+              console.log("new");
+              setNavOpen(!navOpen);
+            }}
+          >
+            <span className="material-icons menuButton">menu</span>
+          </button>
+          <div>
+            <h1>Sanskar Gauchan</h1>
+          </div>
+          {navOpen && (
+            <BackDrop
+              children={<NavMenu navigate={navigate} />}
+              exitHandler={() => setNavOpen(!navOpen)}
+            />
+          )}
+        </motion.nav>
       )}
-    </motion.nav>
+    </>
   );
 }
 

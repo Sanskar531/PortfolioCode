@@ -8,6 +8,7 @@ export default function useNavShow() {
   const [windowSize, setWindowSize] = useState(getWindowSize());
   useEffect(() => {
     function onResize() {
+      console.log(getWindowSize());
       setWindowSize(getWindowSize());
     }
     window.addEventListener("resize", onResize);

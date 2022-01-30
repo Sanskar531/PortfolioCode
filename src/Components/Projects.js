@@ -20,7 +20,6 @@ function Project(props) {
 
 function IndividualProjects(props) {
   const [enterExit, setEnterExit] = useState({ enter: "enterUp", exit: "" }); //Quickly re-renders to add the type of exit animation to complete.
-  console.log(enterExit);
   function transitionLength(i) {
     return {
       transition: {
