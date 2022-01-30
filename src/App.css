@@ -69,12 +69,6 @@ a {
   padding: 0.5rem;
 }
 
-main {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
 .aboutMe {
   justify-content: center;
   align-items: center;
@@ -111,10 +105,14 @@ main {
   background-color: black;
   width: 50%;
   margin: 0;
+  transform: translateX(-0.75rem);
   display: flex;
   justify-content: center;
   flex-direction: column;
   opacity: 1;
+}
+.navMenu a {
+  margin-left: 1.25rem;
 }
 
 .backdrop {
@@ -237,17 +235,27 @@ button {
   }
 
   .aboutMe {
-    flex-wrap: wrap;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .aboutMe img {
+    padding: 0;
     height: 15rem;
+  }
+  .aboutMe div {
+    text-align: center;
   }
 
   .projects {
     flex-wrap: wrap;
+    align-items: flex-start;
   }
-  .projects div {
-    flex-direction: column;
+
+  .navMenuContainer {
+    margin: 0.5em;
   }
 }
 

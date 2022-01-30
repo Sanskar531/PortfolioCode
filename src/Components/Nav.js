@@ -98,7 +98,6 @@ function Nav(props) {
   const navigate = useNavigate();
   const currDimension = useNavShow();
   const [navOpen, setNavOpen] = useState(false);
-  console.log(currDimension);
   const socialLinks = [
     {
       name: "Linkedin",
