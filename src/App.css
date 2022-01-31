@@ -92,6 +92,7 @@ a {
   padding: 0.25rem;
 }
 .navMenuContainer button {
+  border-radius: 50%;
   background-color: white;
 }
 .navMenuContainer div {
@@ -232,6 +233,16 @@ button {
 
   h1 {
     font-size: 1.5rem;
+  }
+
+  .mobileProj {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .mobileProj div {
+    display: flex;
   }
 
   .aboutMe {

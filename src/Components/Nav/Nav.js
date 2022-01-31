@@ -1,90 +1,13 @@
-import inlogo from "./assets/ln.png";
-import ghlogo from "./assets/gh.png";
-import me from "./assets/me.jpg";
+import inlogo from "../assets/ln.png";
+import ghlogo from "../assets/gh.png";
+import me from "../assets/me.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import useNavShow from "./hooks/useNavShow";
-import BackDrop from "./BackDrop";
-
-function AnimatedLinks(props) {
-  return (
-    <motion.a
-      whileTap={{ scale: 0.9 }}
-      whileHover={{
-        scale: 1.1,
-        y: -10,
-        color: "#9575CD",
-      }}
-      onClick={
-        props.handler &&
-        ((e) => {
-          e.preventDefault();
-          props.handler();
-        })
-      }
-      href={props.href && props.href}
-    >
-      {props.text ? props.text : props.children}
-    </motion.a>
-  );
-}
-
-function SocialLinks(props) {
-  return (
-    <motion.div>
-      {props.socialLinks.map((item, ind) => (
-        <AnimatedLinks
-          key={ind}
-          href={item.href}
-          children={<img src={item.src} alt={item.name} />}
-        />
-      ))}
-    </motion.div>
-  );
-}
-function NavMenu(props) {
-  const miniNavAnimations = {
-    initial: {
-      opacity: 0,
-      y: 5,
-    },
-    visible: (ind) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: ind / 10 },
-    }),
-    exit: (ind) => ({
-      opacity: 0,
-      y: 5,
-      transition: { delay: ind / 15 },
-    }),
-  };
-  function handler(e, redirect) {
-    e.stopPropagation();
-    props.exitHandler();
-    props.navigate(redirect);
-  }
-  return (
-    <motion.div className="navMenu">
-      {props.navLinks.map((item, ind) => {
-        return (
-          <motion.a
-            custom={ind}
-            onClick={(e) => handler(e, item.redirect)}
-            variants={miniNavAnimations}
-            initial="initial"
-            animate="visible"
-            exit="exit"
-            key={ind}
-          >
-            {item.name}
-          </motion.a>
-        );
-      })}
-    </motion.div>
-  );
-}
+import BackDrop from "../BackDrop";
+import NavMenu from "./NavMenu";
+import SocialLinks from "./SocialLinks";
+import AnimatedLinks from "./AnimatedLinks";
 
 function Nav(props) {
   const navLinks = [
@@ -94,9 +17,8 @@ function Nav(props) {
     },
     { name: "Projects", redirect: "/projects" },
     { name: "Blog", redirect: "/blog" },
-  ];
+  ]; //make get from server instead;
   const navigate = useNavigate();
-  const currDimension = useNavShow();
   const [navOpen, setNavOpen] = useState(false);
   const socialLinks = [
     {
@@ -105,10 +27,10 @@ function Nav(props) {
       href: "https://www.linkedin.com/in/sanskargauchan/",
     },
     { name: "github", src: ghlogo, href: "https://github.com/Sanskar531" },
-  ];
+  ]; //make get from server instead;
   return (
     <>
-      {!currDimension ? (
+      {!props.currDimension ? (
         <motion.nav className="Nav">
           <motion.div whileHover={{ y: -10 }}>
             <motion.h1>Sanskar Gauchan</motion.h1>
@@ -146,7 +68,6 @@ function Nav(props) {
               console.log("new");
               setNavOpen(!navOpen);
             }}
-            initial={{ borderRadius: "50%" }}
             whileHover={{
               scale: 1.2,
               backgroundColor: "white",

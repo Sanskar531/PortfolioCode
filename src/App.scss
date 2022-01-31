@@ -91,6 +91,7 @@ a {
     padding: 0.25rem;
   }
   button {
+    border-radius: 50%;
     background-color: white;
   }
   div {
@@ -230,6 +231,17 @@ button {
   h1 {
     font-size: 1.5rem;
   }
+
+  .mobileProj {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    div {
+      display: flex;
+    }
+  }
+
   .aboutMe {
     margin: 0.5rem;
     padding: 0.5rem;

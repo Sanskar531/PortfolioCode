@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import brainTumorResults from "./assets/BrainTumorResults.png";
 import MCLR from "./assets/MCLR.png";
+import BackDrop from "./BackDrop";
 
 function Project(props) {
   const [currProjIndex, setCurrProjInd] = useState(0);
@@ -9,11 +10,37 @@ function Project(props) {
     <motion.div className="projectContainer" exit={{ opacity: 0 }}>
       <AnimatePresence exitBeforeEnter>
         <IndividualProjects
+          currDimension={props.currDimension}
           handler={setCurrProjInd}
           key={currProjIndex}
           ind={currProjIndex}
         />
       </AnimatePresence>
+    </motion.div>
+  );
+}
+
+function MobileProjects(props) {
+  const [showImage, setShowImage] = useState(false);
+  return (
+    <motion.div className="mobileProj">
+      <h1>{props.currRenderedProj.name}</h1>
+      <div>
+        {props.currRenderedProj.desc}
+        <button onClick={(e) => setShowImage(true)}>nwqprops.</button>
+      </div>
+      <button>next</button>
+      {showImage ? (
+        <BackDrop
+          children={
+            <img
+              src={props.currRenderedProj.img}
+              alt={props.currRenderedProj.name}
+            />
+          }
+          exitHandler={() => setShowImage(false)}
+        />
+      ) : null}
     </motion.div>
   );
 }
@@ -66,44 +93,53 @@ function IndividualProjects(props) {
   ];
   const currRenderedProj = projects[props.ind];
   return (
-    <motion.div
-      key={props.ind}
-      variants={projectAnimations}
-      initial={enterExit.enter}
-      animate="visible"
-      className="projects"
-      exit={enterExit.exit}
-    >
-      {props.ind !== 0 && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setEnterExit({ enter: "enterUp", exit: "exitUp" });
-            props.handler(props.ind - 1);
-          }}
+    <>
+      {!props.currDimension ? (
+        <motion.div
+          key={props.ind}
+          variants={projectAnimations}
+          initial={enterExit.enter}
+          animate="visible"
+          className="projects"
+          exit={enterExit.exit}
         >
-          Go Up
-        </button>
+          {props.ind !== 0 && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setEnterExit({ enter: "enterUp", exit: "exitUp" });
+                props.handler(props.ind - 1);
+              }}
+            >
+              Go Up
+            </button>
+          )}
+          <div>
+            <img src={currRenderedProj.img} alt={currRenderedProj.name} />
+            <div>
+              <h1>{currRenderedProj.name}</h1>
+              <p>{currRenderedProj.desc}</p>
+            </div>
+          </div>
+          {props.ind !== projects.length - 1 && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setEnterExit({ enter: "enterUp", exit: "exitDown" });
+                props.handler(props.ind + 1);
+              }}
+            >
+              Go down
+            </button>
+          )}
+        </motion.div>
+      ) : (
+        <MobileProjects
+          handler={props.handler}
+          currRenderedProj={currRenderedProj}
+        />
       )}
-      <div>
-        <img src={currRenderedProj.img} alt={currRenderedProj.name} />
-        <div>
-          <h1>{currRenderedProj.name}</h1>
-          <p>{currRenderedProj.desc}</p>
-        </div>
-      </div>
-      {props.ind !== projects.length - 1 && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setEnterExit({ enter: "enterUp", exit: "exitDown" });
-            props.handler(props.ind + 1);
-          }}
-        >
-          Go down
-        </button>
-      )}
-    </motion.div>
+    </>
   );
 }
 
