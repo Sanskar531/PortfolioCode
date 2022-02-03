@@ -65,12 +65,10 @@ function Nav(props) {
         <motion.nav className="navMenuContainer">
           <motion.button
             onClick={(e) => {
-              console.log("new");
               setNavOpen(!navOpen);
             }}
             whileHover={{
               scale: 1.2,
-              backgroundColor: "white",
             }}
             whileTap={{ scale: 0.8, backgroundColor: "#9575CD" }}
           >

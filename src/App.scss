@@ -119,7 +119,7 @@ a {
   position: absolute;
   z-index: 99;
   height: 100vh;
-  background-color: #ffffffe1;
+  background-color: #000000e1;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -134,32 +134,55 @@ a {
 .aboutMe {
   display: flex;
   margin: 2rem;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
 }
 
 .projects {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  * {
-    margin: 0.5rem;
+  .emptySpace,
+  .arrow {
+    flex: 1 0 0;
   }
-  img {
-    flex-shrink: 1;
-    height: 27.5rem;
-    border-radius: 1.25rem;
-  }
-  div {
+  .MonitorView {
     display: flex;
-    flex-shrink: 1;
-    div {
-      justify-content: center;
-      display: flex;
-      flex-shrink: 1;
-      flex-direction: column;
+    align-items: center;
+    img {
+      width: 35%;
+      border-radius: 20px;
+    }
+    * {
+      margin: 0.5rem;
     }
   }
+  .mobileProj {
+    flex: 2 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    div {
+      display: flex;
+      flex-direction: column;
+      text-align: justify;
+      div {
+        justify-content: flex-start;
+      }
+      button {
+        background-color: white;
+      }
+    }
+    img {
+      width: 80%;
+    }
+  }
+}
+
+.blog {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer {
@@ -232,16 +255,6 @@ button {
     font-size: 1.5rem;
   }
 
-  .mobileProj {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    div {
-      display: flex;
-    }
-  }
-
   .aboutMe {
     margin: 0.5rem;
     padding: 0.5rem;
@@ -256,10 +269,7 @@ button {
       text-align: center;
     }
   }
-  .projects {
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
+
   .navMenuContainer {
     margin: 0.5em;
   }

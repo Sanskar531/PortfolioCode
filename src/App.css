@@ -120,7 +120,7 @@ a {
   position: absolute;
   z-index: 99;
   height: 100vh;
-  background-color: #ffffffe1;
+  background-color: #000000e1;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -135,32 +135,55 @@ a {
 .aboutMe {
   display: flex;
   margin: 2rem;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
 }
 
 .projects {
   display: flex;
   flex-direction: column;
+}
+.projects .emptySpace,
+.projects .arrow {
+  flex: 1 0 0;
+}
+.projects .MonitorView {
+  display: flex;
+  align-items: center;
+}
+.projects .MonitorView img {
+  width: 35%;
+  border-radius: 20px;
+}
+.projects .MonitorView * {
+  margin: 0.5rem;
+}
+.projects .mobileProj {
+  flex: 2 0 0;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.projects * {
-  margin: 0.5rem;
-}
-.projects img {
-  flex-shrink: 1;
-  height: 27.5rem;
-  border-radius: 1.25rem;
-}
-.projects div {
+.projects .mobileProj div {
   display: flex;
-  flex-shrink: 1;
-}
-.projects div div {
-  justify-content: center;
-  display: flex;
-  flex-shrink: 1;
   flex-direction: column;
+  text-align: justify;
+}
+.projects .mobileProj div div {
+  justify-content: flex-start;
+}
+.projects .mobileProj div button {
+  background-color: white;
+}
+.projects .mobileProj img {
+  width: 80%;
+}
+
+.blog {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer {
@@ -235,16 +258,6 @@ button {
     font-size: 1.5rem;
   }
 
-  .mobileProj {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .mobileProj div {
-    display: flex;
-  }
-
   .aboutMe {
     margin: 0.5rem;
     padding: 0.5rem;
@@ -258,11 +271,6 @@ button {
   }
   .aboutMe div {
     text-align: center;
-  }
-
-  .projects {
-    flex-wrap: wrap;
-    align-items: flex-start;
   }
 
   .navMenuContainer {
