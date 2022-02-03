@@ -51,6 +51,7 @@ a {
     flex: 1 0 auto;
     align-items: center;
     .Links {
+      height: 3.5rem;
       display: flex;
       justify-content: right;
       flex: 1 0 auto;
@@ -59,7 +60,8 @@ a {
         height: 2rem;
       }
       .me {
-        height: 2rem;
+        height: 2.75rem;
+        padding: 0.5rem;
         border-radius: 50%;
       }
     }
@@ -144,6 +146,10 @@ a {
   .arrow {
     flex: 1 0 0;
   }
+  .arrow {
+    display: flex;
+    justify-content: center;
+  }
   .MonitorView {
     display: flex;
     align-items: center;
@@ -166,11 +172,17 @@ a {
       flex-direction: column;
       text-align: justify;
       div {
-        justify-content: flex-start;
+        flex: 1 0 auto;
+        display: flex;
+        align-items: center;
+        button {
+          width: 40%;
+          background-color: white;
+        }
       }
-      button {
-        background-color: white;
-      }
+    }
+    * {
+      margin: 0.5rem;
     }
     img {
       width: 80%;
@@ -201,7 +213,6 @@ a {
   flex-direction: column;
   color: #2a2c2b;
   border: none;
-  border-radius: 20px;
   border-style: solid;
   border-color: white;
   background-color: #2a2c2b;
@@ -235,11 +246,20 @@ a {
       border-radius: 10px;
       border-color: #2a2c2b;
     }
-    :last-child {
-      height: 6rem;
+    div {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    border-radius: 0 0 20px 20px;
+    .submitButton {
+      background-color: white;
+    }
   }
+}
+
+.closeButton {
+  color: white;
 }
 
 button {
@@ -249,7 +269,7 @@ button {
 }
 @media screen and (max-width: 640px) {
   :root {
-    font-size: 16px;
+    font-size: 13px;
   }
   h1 {
     font-size: 1.5rem;

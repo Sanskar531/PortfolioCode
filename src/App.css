@@ -53,6 +53,7 @@ a {
   align-items: center;
 }
 .Nav .NavBar .Links {
+  height: 3.5rem;
   display: flex;
   justify-content: right;
   flex: 1 0 auto;
@@ -62,7 +63,8 @@ a {
   height: 2rem;
 }
 .Nav .NavBar .Links .me {
-  height: 2rem;
+  height: 2.75rem;
+  padding: 0.5rem;
   border-radius: 50%;
 }
 .Nav a {
@@ -146,6 +148,10 @@ a {
 .projects .arrow {
   flex: 1 0 0;
 }
+.projects .arrow {
+  display: flex;
+  justify-content: center;
+}
 .projects .MonitorView {
   display: flex;
   align-items: center;
@@ -170,10 +176,16 @@ a {
   text-align: justify;
 }
 .projects .mobileProj div div {
-  justify-content: flex-start;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
 }
-.projects .mobileProj div button {
+.projects .mobileProj div div button {
+  width: 40%;
   background-color: white;
+}
+.projects .mobileProj * {
+  margin: 0.5rem;
 }
 .projects .mobileProj img {
   width: 80%;
@@ -202,7 +214,6 @@ a {
   flex-direction: column;
   color: #2a2c2b;
   border: none;
-  border-radius: 20px;
   border-style: solid;
   border-color: white;
   background-color: #2a2c2b;
@@ -226,7 +237,6 @@ a {
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  border-radius: 0 0 20px 20px;
 }
 .modal form input,
 .modal form textarea {
@@ -239,8 +249,18 @@ a {
   border-radius: 10px;
   border-color: #2a2c2b;
 }
-.modal form :last-child {
-  height: 6rem;
+.modal form div {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal form .submitButton {
+  background-color: white;
+}
+
+.closeButton {
+  color: white;
 }
 
 button {
@@ -251,7 +271,7 @@ button {
 
 @media screen and (max-width: 640px) {
   :root {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   h1 {
