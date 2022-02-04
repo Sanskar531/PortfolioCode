@@ -177,6 +177,9 @@ a {
         align-items: center;
         button {
           width: 40%;
+          font-size: 1.25rem;
+          padding: 0.1rem;
+          border-radius: 4px;
           background-color: white;
         }
       }
@@ -207,32 +210,35 @@ a {
 }
 
 .modal {
-  width: 50%;
+  width: clamp(50%, 600px, 75%);
   display: flex;
-  background-color: white;
   flex-direction: column;
   color: #2a2c2b;
   border: none;
   border-style: solid;
   border-color: white;
-  background-color: #2a2c2b;
+  background-color: white;
   div {
     margin: 0.5rem;
-    color: white;
     flex: 1 0 auto;
     display: flex;
     h4 {
       flex: 1 0 auto;
     }
     button {
+      background-color: white;
+    }
+    .closeButton {
       align-self: flex-start;
-      background-color: inherit;
       border: none;
+      background-color: white;
+      color: #2a2c2b;
     }
   }
   form {
     background-color: white;
     padding: 0.5rem;
+    padding-bottom: 0;
     display: flex;
     flex-direction: column;
     input,
@@ -253,7 +259,12 @@ a {
       align-items: center;
     }
     .submitButton {
-      background-color: white;
+      font-size: 1.25rem;
+      font-weight: lighter;
+      background-color: #2a2c2b;
+      padding: 0.45rem;
+      color: white;
+      border-radius: 5px;
     }
   }
 }
