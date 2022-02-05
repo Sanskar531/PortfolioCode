@@ -61,10 +61,10 @@ function AboutMe(props) {
       >
         <h1>Hi! I am Sanskar Gauchan!</h1>
         <p>
-          A current UTS Student who loves coding and am specializing in Data
-          Science and Software Development.
-          <br /> <br />I dabble a little bit in UX/Interaction Design, too,
-          since it is a vital part of software development.
+          I am a current UTS Student who loves coding and am specializing in
+          Data Science and Software Development.
+          <br /> <br />I dabble a little in UX/Interaction Design, too, so that
+          I can give users an amazing experience when they visit my website.
         </p>
       </motion.div>
     </motion.div>

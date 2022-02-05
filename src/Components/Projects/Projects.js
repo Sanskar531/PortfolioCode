@@ -89,14 +89,14 @@ function IndividualProjects(props) {
     {
       name: "Brain Tumor Segmentation",
       desc:
-        "Coded the U-net from scratch in python to segment tumors from normal Brain MRI images.Dealt with class imbalance since the tumor mask had a lot of 0’s but under-represented 1’s, which made the U-net segment to all 0’s that still yielded a good accuracy with MSE loss function but the image segmented nothing. Employed weighted cross entropy to give the class 1 in tumor class more precedence than 0’s in the tumor mask.",
+        "Coded the U-net from scratch in python to segment tumors from normal Brain MRI images. Dealt with class imbalance since the tumor mask had a lot of 0’s but under-represented 1’s, which made the U-net segment to all 0’s that still yielded a good accuracy with MSE loss function but yielded an uninformative image. Then, I employed weighted cross entropy to give the class 1 in tumor mask more precedence over 0 in the tumor mask which inevitably led to the Unet segmenting tumors correctly.",
       img: brainTumorResults,
       link: "https://github.com/Sanskar531/Brain-Tumor-Segmentation-using-Unet",
     },
     {
       name: "Multi-Class Regression Model",
       desc:
-        "Implemented binary logistic regression model with sigmoid function that maps value between the range of 0 and 1. Used a threshold of 0.6 resulted in excellent accuracy. Hence, this was then used to make the model multi-class. Trained a number of logistic regressors, using one-vs-all concept, based on the number of classes existing on the dataset and, used the logistic regressor with the highest probability of 1. ",
+        'Implemented binary logistic regression model with sigmoid function that maps value between the range of 0 and 1. Used a generalized threshold of 0.6 yielded in excellent accuracy on different datasets. Hence, this was then used to make a multi-class logistic regresson using the "One vs all" concept. Trained a number of logistic regressors based on the number of target classes existing on the dataset and, ouputted the logistic regressor with the highest probability of 1 as the predicted class. ',
       img: MCLR,
       link: "https://github.com/Sanskar531/Multi-Class-Logistic-Regression",
     },
