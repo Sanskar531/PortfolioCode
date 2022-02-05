@@ -147,6 +147,9 @@ a {
     flex: 1 0 0;
   }
   .arrow {
+    button {
+      cursor: pointer;
+    }
     display: flex;
     justify-content: center;
   }
@@ -154,10 +157,11 @@ a {
     display: flex;
     align-items: center;
     img {
+      flex-shrink: 0;
       width: 35%;
       border-radius: 20px;
     }
-    * {
+    & > * {
       margin: 0.5rem;
     }
   }
@@ -210,11 +214,13 @@ a {
 }
 
 .modal {
+  padding: 1rem;
   width: clamp(50%, 600px, 75%);
   display: flex;
   flex-direction: column;
   color: #2a2c2b;
   border: none;
+  border-radius: 20px;
   border-style: solid;
   border-color: white;
   background-color: white;
@@ -222,6 +228,8 @@ a {
     margin: 0.5rem;
     flex: 1 0 auto;
     display: flex;
+    padding: 0.35rem;
+    padding-bottom: 0;
     h4 {
       flex: 1 0 auto;
     }
@@ -241,9 +249,13 @@ a {
     padding-bottom: 0;
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
+    * {
+      margin: 0.3rem;
+    }
     input,
     textarea {
-      padding: 0.5rem;
+      padding: 0.75rem;
       font-size: 1rem;
       overflow: hidden;
       width: 80%;

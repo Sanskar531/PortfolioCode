@@ -121,7 +121,14 @@ function MobileProjects(props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <h1>{props.currRenderedProj.name}</h1>
+      <motion.div
+        whileHover={{ scale: 1.05, color: "#9575CD" }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <a href={props.currRenderedProj.link}>
+          <h1>{props.currRenderedProj.name}</h1>
+        </a>
+      </motion.div>
       <div>
         {props.currRenderedProj.desc}
         <div>
@@ -155,13 +162,6 @@ function MobileProjects(props) {
 }
 
 function IndividualProjects(props) {
-  function transitionLength(i) {
-    return {
-      transition: {
-        duration: i,
-      },
-    };
-  }
   const projectAnimations = {
     hidden: {
       opacity: 0,
@@ -179,12 +179,14 @@ function IndividualProjects(props) {
       desc:
         "Coded the U-net from scratch in python to segment tumors from normal Brain MRI images.Dealt with class imbalance since the tumor mask had a lot of 0’s but under-represented 1’s, which made the U-net segment to all 0’s that still yielded a good accuracy with MSE loss function but the image segmented nothing. Employed weighted cross entropy to give the class 1 in tumor class more precedence than 0’s in the tumor mask.",
       img: brainTumorResults,
+      link: "https://github.com/Sanskar531/Brain-Tumor-Segmentation-using-Unet",
     },
     {
       name: "Multi-Class Regression Model",
       desc:
         "Implemented binary logistic regression model with sigmoid function that maps value between the range of 0 and 1. Used a threshold of 0.6 resulted in excellent accuracy. Hence, this was then used to make the model multi-class. Trained a number of logistic regressors, using one-vs-all concept, based on the number of classes existing on the dataset and, used the logistic regressor with the highest probability of 1. ",
       img: MCLR,
+      link: "https://github.com/Sanskar531/Multi-Class-Logistic-Regression",
     },
   ];
   const currRenderedProj = projects[props.ind];
@@ -206,7 +208,17 @@ function IndividualProjects(props) {
             >
               <img src={currRenderedProj.img} alt={currRenderedProj.name} />
               <div>
-                <h1>{currRenderedProj.name}</h1>
+                <motion.div whileHover={{ color: "#9575CD", y: -10 }}>
+                  <h1>
+                    <a
+                      rel="noreferrer noopener"
+                      target="_blank"
+                      href={currRenderedProj.link}
+                    >
+                      {currRenderedProj.name}
+                    </a>
+                  </h1>
+                </motion.div>
                 <p>{currRenderedProj.desc}</p>
               </div>
             </motion.div>

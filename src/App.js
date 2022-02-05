@@ -10,7 +10,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Routes, Route, useLocation } from "react-router-dom";
 import useNavShow from "./Components/hooks/useNavShow";
 import { Blog } from "./Components/Blog";
-import { Trial } from "./Components/Trial";
 
 function App() {
   const [findMe, setFindMe] = useState(false);
@@ -45,7 +44,6 @@ function App() {
             element={<Project currDimension={currDimension} />}
           />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/trial" element={<Trial />} />
         </Routes>
       </AnimatePresence>
       <Footer />

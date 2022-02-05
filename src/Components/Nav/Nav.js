@@ -45,7 +45,7 @@ function Nav(props) {
                 />
               );
             })}
-            <AnimatedLinks text="FindMe" handler={props.findHandler} />
+            <AnimatedLinks text="Contact Me" handler={props.findHandler} />
             <div className="Links">
               <AnimatePresence>
                 {props.location.pathname !== "/" && (

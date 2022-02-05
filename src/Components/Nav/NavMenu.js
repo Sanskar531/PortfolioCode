@@ -20,15 +20,23 @@ export default function NavMenu(props) {
   function handler(e, redirect) {
     e.stopPropagation();
     props.exitHandler();
-    props.navigate(redirect);
+    if (redirect) {
+      props.navigate(redirect);
+    }
   }
+  const links = [
+    ...props.navLinks,
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/sanskargauchan/" },
+    { name: "Github", href: "https://github.com/Sanskar531" },
+  ];
   return (
     <motion.div className="navMenu">
-      {props.navLinks.map((item, ind) => {
+      {links.map((item, ind) => {
         return (
           <motion.a
             custom={ind}
             onClick={(e) => handler(e, item.redirect)}
+            href={item.href && item.href}
             variants={miniNavAnimations}
             initial="initial"
             animate="visible"

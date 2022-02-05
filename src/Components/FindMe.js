@@ -74,12 +74,16 @@ function FindMe(props) {
         </button>
       </div>
       <form onSubmit={(e) => handler(e)}>
-        <h4>Name</h4>
-        <input type="text" name="Name"></input>
-        <h4>Email</h4>
-        <input type="email" name="Email"></input>
-        <h4>Please mention the intent for contacting.</h4>
-        <textarea name="Description"></textarea>
+        <h4>Name:</h4>
+        <input type="text" name="Name" required></input>
+        <h4>E-mail:</h4>
+        <input type="email" name="Email" required></input>
+        <h4>Enquiry:</h4>
+        <textarea
+          name="Description"
+          placeholder="Please mention your enquiry here."
+          required
+        ></textarea>
         <div>
           <motion.button
             initial={false}
