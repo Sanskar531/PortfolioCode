@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import AboutMe from "./Components/Aboutme";
+import AboutMe from "./Components/Home/Aboutme";
 import Footer from "./Components/Footer";
 import Nav from "./Components/Nav/Nav";
-import Project from "./Components/Projects";
-import FindMe from "./Components/FindMe";
-import BackDrop from "./Components/BackDrop";
+import Project from "./Components/Projects/Projects";
+import FindMe from "./Components/Modal/FindMe";
+import BackDrop from "./Components/Modal/BackDrop";
 import { AnimatePresence, motion } from "framer-motion";
 import { Routes, Route, useLocation } from "react-router-dom";
 import useNavShow from "./Components/hooks/useNavShow";

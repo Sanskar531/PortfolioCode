@@ -1,4 +1,4 @@
-import me from "./assets/me.jpg";
+import me from "../assets/me.jpg";
 import { motion } from "framer-motion";
 
 function AboutMe(props) {

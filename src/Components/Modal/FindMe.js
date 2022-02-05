@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import constants from "../constants.js";
+import constants from "../../constants.js";
 
 function FindMe(props) {
   function handler(e) {
@@ -47,7 +47,7 @@ function FindMe(props) {
   };
   return (
     <motion.div
-      key="model"
+      key="modal"
       className="modal"
       variants={modalAnimations}
       initial="initial"

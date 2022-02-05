@@ -4,10 +4,81 @@ import me from "../assets/me.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import BackDrop from "../BackDrop";
+import BackDrop from "../Modal/BackDrop";
 import NavMenu from "./NavMenu";
 import SocialLinks from "./SocialLinks";
 import AnimatedLinks from "./AnimatedLinks";
+
+function MonitorNav(props) {
+  return (
+    <motion.nav className="Nav">
+      <motion.div whileHover={{ y: -10 }}>
+        <motion.h1>Sanskar Gauchan</motion.h1>
+      </motion.div>
+      <motion.div className="NavBar">
+        {props.navLinks.map((item, ind) => {
+          return (
+            <AnimatedLinks
+              key={ind}
+              text={item.name}
+              handler={() => props.navigate(item.redirect)}
+            />
+          );
+        })}
+        <AnimatedLinks text="Contact Me" handler={props.findHandler} />
+        <div className="Links">
+          <AnimatePresence>
+            {props.location.pathname !== "/" && (
+              <motion.img
+                src={me}
+                className="me"
+                animate={{ scale: [0, 1] }}
+                exit={{ scale: [1, 0] }}
+              ></motion.img>
+            )}
+          </AnimatePresence>
+          <SocialLinks socialLinks={props.socialLinks} />
+        </div>
+      </motion.div>
+    </motion.nav>
+  );
+}
+
+function MobileNav(props) {
+  return (
+    <motion.nav className="navMenuContainer">
+      <motion.button
+        onClick={(e) => {
+          props.setNavOpen(!props.navOpen);
+        }}
+        whileHover={{
+          scale: 1.2,
+        }}
+        whileTap={{ scale: 0.8, backgroundColor: "#9575CD" }}
+      >
+        <span className="material-icons menuButton">menu</span>
+      </motion.button>
+      <div>
+        <h1>Sanskar Gauchan</h1>
+      </div>
+      <AnimatePresence>
+        {props.navOpen && (
+          <BackDrop
+            key={props.navOpen}
+            children={
+              <NavMenu
+                navigate={props.navigate}
+                exitHandler={() => props.setNavOpen(!props.navOpen)}
+                navLinks={props.navLinks}
+              />
+            }
+            exitHandler={() => props.setNavOpen(!props.navOpen)}
+          />
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  );
+}
 
 function Nav(props) {
   const navLinks = [
@@ -31,68 +102,20 @@ function Nav(props) {
   return (
     <>
       {!props.currDimension ? (
-        <motion.nav className="Nav">
-          <motion.div whileHover={{ y: -10 }}>
-            <motion.h1>Sanskar Gauchan</motion.h1>
-          </motion.div>
-          <motion.div className="NavBar">
-            {navLinks.map((item, ind) => {
-              return (
-                <AnimatedLinks
-                  key={ind}
-                  text={item.name}
-                  handler={() => navigate(item.redirect)}
-                />
-              );
-            })}
-            <AnimatedLinks text="Contact Me" handler={props.findHandler} />
-            <div className="Links">
-              <AnimatePresence>
-                {props.location.pathname !== "/" && (
-                  <motion.img
-                    src={me}
-                    className="me"
-                    animate={{ scale: [0, 1] }}
-                    exit={{ scale: [1, 0] }}
-                  ></motion.img>
-                )}
-              </AnimatePresence>
-              <SocialLinks socialLinks={socialLinks} />
-            </div>
-          </motion.div>
-        </motion.nav>
+        <MonitorNav
+          navLinks={navLinks}
+          location={props.location}
+          navigate={navigate}
+          findHandler={props.findHandler}
+          socialLinks={socialLinks}
+        />
       ) : (
-        <motion.nav className="navMenuContainer">
-          <motion.button
-            onClick={(e) => {
-              setNavOpen(!navOpen);
-            }}
-            whileHover={{
-              scale: 1.2,
-            }}
-            whileTap={{ scale: 0.8, backgroundColor: "#9575CD" }}
-          >
-            <span className="material-icons menuButton">menu</span>
-          </motion.button>
-          <div>
-            <h1>Sanskar Gauchan</h1>
-          </div>
-          <AnimatePresence>
-            {navOpen && (
-              <BackDrop
-                key={navOpen}
-                children={
-                  <NavMenu
-                    navigate={navigate}
-                    exitHandler={() => setNavOpen(!navOpen)}
-                    navLinks={navLinks}
-                  />
-                }
-                exitHandler={() => setNavOpen(!navOpen)}
-              />
-            )}
-          </AnimatePresence>
-        </motion.nav>
+        <MobileNav
+          navOpen={navOpen}
+          setNavOpen={setNavOpen}
+          navigate={navigate}
+          navLinks={navLinks}
+        />
       )}
     </>
   );

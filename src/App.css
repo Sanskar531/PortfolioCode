@@ -266,6 +266,7 @@ a {
   border-style: solid;
   border-radius: 10px;
   border-color: #2a2c2b;
+  font-family: "PT Sans", sans-serif;
 }
 .modal form div {
   flex: 1 0 auto;

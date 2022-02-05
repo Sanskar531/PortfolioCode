@@ -16,6 +16,8 @@ export default function AnimatedLinks(props) {
           props.handler();
         })
       }
+      target="_blank"
+      rel="noreferrer noopener"
       href={props.href && props.href}
     >
       {props.text ? props.text : props.children}
