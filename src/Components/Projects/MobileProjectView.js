@@ -16,12 +16,15 @@ function MobileProjects(props) {
       <motion.div
         whileHover={{ scale: 1.05, color: "#9575CD" }}
         whileTap={{ scale: 0.95 }}
+        className="projectMobileTitle"
       >
-        <a href={props.currRenderedProj.link}>
-          <h1>{props.currRenderedProj.name}</h1>
-        </a>
+        <div>
+          <a href={props.currRenderedProj.link}>
+            <h1>{props.currRenderedProj.name}</h1>
+          </a>
+        </div>
       </motion.div>
-      <div>
+      <div className="desc">
         {props.currRenderedProj.desc}
         <div>
           <motion.button
@@ -40,7 +43,6 @@ function MobileProjects(props) {
           <BackDrop
             children={
               <img
-                id="smallProj"
                 src={props.currRenderedProj.img}
                 alt={props.currRenderedProj.name}
               />

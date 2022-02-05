@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "material-icons/iconfont/material-icons.css";
 
 ReactDOM.render(
-  <Router>
+  <Router basename="/Portfolio">
     <App />
   </Router>,
   document.getElementById("root")

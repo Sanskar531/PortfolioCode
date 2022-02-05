@@ -51,6 +51,7 @@ function FindMe(props) {
       className="modal"
       variants={modalAnimations}
       initial="initial"
+      style={{ margin: 0, padding: 0 }}
       animate="enter"
       exit="exit"
       onClick={(e) => e.stopPropagation()}
