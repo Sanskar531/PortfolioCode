@@ -28,6 +28,13 @@ export default function NavMenu(props) {
     ...props.navLinks,
     { name: "LinkedIn", href: "https://www.linkedin.com/in/sanskargauchan/" },
     { name: "Github", href: "https://github.com/Sanskar531" },
+    {
+      name: "Contact Me",
+      eventHandler: (e) => {
+        e.preventDefault();
+        props.findHandler();
+      },
+    },
   ];
   return (
     <motion.div className="navMenu">
@@ -35,7 +42,11 @@ export default function NavMenu(props) {
         return (
           <motion.a
             custom={ind}
-            onClick={(e) => handler(e, item.redirect)}
+            onClick={
+              item.eventHandler
+                ? (e) => item.eventHandler(e)
+                : (e) => handler(e, item.redirect)
+            }
             href={item.href && item.href}
             variants={miniNavAnimations}
             initial="initial"

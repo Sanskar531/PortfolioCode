@@ -70,6 +70,7 @@ function MobileNav(props) {
                 navigate={props.navigate}
                 exitHandler={() => props.setNavOpen(!props.navOpen)}
                 navLinks={props.navLinks}
+                findHandler={props.findHandler}
               />
             }
             exitHandler={() => props.setNavOpen(!props.navOpen)}
@@ -114,6 +115,7 @@ function Nav(props) {
           navOpen={navOpen}
           setNavOpen={setNavOpen}
           navigate={navigate}
+          findHandler={props.findHandler}
           navLinks={navLinks}
         />
       )}
